@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marius Hotel - Stay In The Depth</title>
+    <title>Five Star Horizon Hotel - Stay In The Depth</title>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts & Icons -->
@@ -112,7 +112,7 @@
     <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="bi bi-buildings-fill text-warning"></i> MARIUS
+                <i class="bi bi-buildings-fill text-warning"></i> Five Star Horizon Hotel 💫
             </a>
             <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
