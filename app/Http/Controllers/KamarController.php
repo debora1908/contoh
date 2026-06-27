@@ -18,7 +18,7 @@ class KamarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nomor_kamar' => 'required|unique:kamars',
+            'nomor_kamar' => 'required|unique:kamars,nomor_kamar',
             'tipe_kamar' => 'required',
             'harga_per_malam' => 'required|numeric',
         ]);

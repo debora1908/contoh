@@ -3,55 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Five Star Horizon Hotel - Stay In The Depth</title>
-    <!-- Bootstrap 5 -->
+    <title>Five Star Horizon Hotel - Bali Theme</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #1a1e21;
-            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fa; /* Warna dasar cerah & bersih */
+            color: #2A363E; /* Abu-abu kebiruan gelap */
         }
-        /* Navbar Styling */
         .navbar {
-            background-color: #2a3135 !important;
+            background-color: #ffffff !important;
             padding: 20px 0;
+            border-bottom: 1px solid #e3e9ed;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .navbar-brand {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             letter-spacing: 2px;
-            color: #fff !important;
-            font-size: 24px;
+            color: #0E7490 !important; /* Warna Teal Biru Laut Premium */
         }
         .nav-link {
-            color: #b5bec5 !important;
+            color: #4A5568 !important;
             font-size: 14px;
-            font-weight: 400;
-            margin: 0 10px;
+            font-weight: 500;
+            margin: 0 12px;
             transition: 0.3s;
         }
         .nav-link:hover {
-            color: #dcb373 !important;
+            color: #0E7490 !important;
         }
-        .btn-reservation {
-            background-color: #dcb373;
-            color: #1a1e21 !important;
+        .btn-bali {
+            background-color: #0E7490; /* Aksen Biru Kolam Resort */
+            color: #ffffff !important;
             font-weight: 600;
-            border-radius: 5px;
-            padding: 8px 20px;
+            border-radius: 50px; /* Melengkung halus elegan */
+            padding: 10px 28px;
             font-size: 14px;
+            border: none;
+            transition: 0.3s;
         }
-        .btn-reservation:hover {
-            background-color: #c9a162;
+        .btn-bali:hover {
+            background-color: #065F46; /* Hijau toska tua saat hover */
         }
-        /* Hero Section Styling */
         .hero-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1920&auto=format&fit=crop');
+            /* Menggunakan gambar resort bintang 5 dengan kolam renang menghadap pantai */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             height: 85vh;
@@ -59,90 +59,64 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
         }
         .hero-subtitle {
             font-size: 12px;
             letter-spacing: 4px;
-            color: #dcb373;
+            color: #E0F2FE;
             text-transform: uppercase;
+            font-weight: 600;
             margin-bottom: 15px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
         }
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 52px;
-            font-weight: 400;
-            letter-spacing: 3px;
+            font-size: 62px;
+            font-weight: 700;
+            color: #ffffff;
             line-height: 1.2;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
         }
-        .btn-rooms {
+        .btn-explore {
             background-color: #ffffff;
-            color: #1a1e21;
-            font-weight: 500;
-            padding: 12px 35px;
-            border-radius: 30px;
+            color: #0E7490;
+            font-weight: 600;
+            padding: 15px 40px;
+            border-radius: 50px;
             text-decoration: none;
             font-size: 14px;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .btn-rooms:hover {
-            background-color: #dcb373;
+        .btn-explore:hover {
+            background-color: #0E7490;
             color: #ffffff;
-        }
-        /* Floating Left Badge */
-        .floating-badge {
-            position: absolute;
-            left: 0;
-            top: 40%;
-            background-color: rgba(42, 49, 53, 0.8);
-            padding: 20px 10px;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            letter-spacing: 2px;
-            font-size: 14px;
-            border-left: 3px solid #dcb373;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-buildings-fill text-warning"></i> Five Star Horizon Hotel 💫
-            </a>
-            <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <a class="navbar-brand" href="#"><i class="bi bi-water"></i>Five Star Horizon Hotel</a>
+            <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">History</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Rooms & Suites</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Photos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sustainability</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Villas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Beach Club</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Wellness</a></li>
                 </ul>
             </div>
-            <!-- Tombol yang mengarah ke Halaman Pemesanan / Manajemen Kamar -->
-            <a href="{{ route('kamar.index') }}" class="btn btn-reservation">Reservation</a>
+            <a href="{{ route('reservasi.index') }}" class="btn btn-bali shadow-sm">Book A Stay</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <div class="hero-section">
-        <!-- Floating Left Badge Text -->
-        <div class="floating-badge text-muted">
-            <i class="bi bi-telephone"></i> RESERVATION
-        </div>
-
         <div class="container">
-            <p class="hero-subtitle">The Ultimate Luxury Experience</p>
-            <h1 class="hero-title">ENJOY THE BEST<br>MOMENTS OF LIFE</h1>
-            <a href="{{ route('kamar.index') }}" class="btn-rooms shadow">Rooms & Suites</a>
+            <p class="hero-subtitle">5-Star Luxury Beachfront Sanctuary</p>
+            <h1 class="hero-title">Experience Paradise<br>In Tropical Bali</h1>
+            <a href="{{ route('reservasi.index') }}" class="btn-explore">Discover Our Suites</a>
         </div>
     </div>
 

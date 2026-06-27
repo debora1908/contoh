@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservasiController;
 Route::get('/', function () {
     return view('welcome');
+    
 });
 Route::get('/kamar', [KamarController::class, 'index'])->name('kamar.index');
 Route::post('/kamar', [KamarController::class, 'store'])->name('kamar.store');

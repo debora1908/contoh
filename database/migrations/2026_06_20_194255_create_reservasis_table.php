@@ -6,27 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('reservasis', function (Blueprint $table) {
             $table->id();
+            // Membuat relasi ke tabel kamars (asumsi kamu punya model Kamar)
             $table->foreignId('kamar_id')->constrained('kamars')->onDelete('cascade');
-        $table->string('nama_tamu');
-        $table->string('email_tamu');
-        $table->date('tanggal_checkin');
-        $table->date('tanggal_checkout');
-        $table->integer('total_bayar');
-        $table->enum('status_pembayaran', ['Belum Bayar', 'Lunas'])->default('Belum Bayar');
+            $table->string('nama_tamu');
+            $table->date('tanggal_checkin');
+            $table->date('tanggal_checkout');
+            $table->string('status_pembayaran')->default('Belum Bayar');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('reservasis');
