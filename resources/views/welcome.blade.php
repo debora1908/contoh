@@ -103,7 +103,7 @@
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Villas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('villas.index') }}">Villas</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Beach Club</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Wellness</a></li>
                 </ul>

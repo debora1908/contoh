@@ -22,3 +22,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.proses');
 
 // Menangani aksi keluar dari sistem (Logout)
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route untuk halaman daftar foto-foto vila
+Route::get('/villas', function () {
+    return view('villas.index');
+})->name('villas.index');
