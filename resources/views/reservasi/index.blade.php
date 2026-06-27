@@ -138,37 +138,26 @@
                     <p class="text-muted small">Silakan isi detail data masa inap Anda dengan benar.</p>
                 </div>
 
-                <form action="#" method="POST">
+               <form action="{{ route('booking.store') }}" method="POST">
+    @csrf
+   <input type="text" name="nama_tamu" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
                     <!-- NAMA TAMU -->
                     <div class="mb-3">
-                        <label for="nama_tamu" class="form-label">Nama Tamu</label>
-                        <input type="text" class="form-control" id="nama_tamu" name="nama_tamu" placeholder="Masukkan nama lengkap Anda" required>
-                    </div>
+                          </div>
                     <div class="mb-3">
         <label for="email_tamu" class="form-label">Email Tamu</label>
         <input type="email" class="form-control" id="email_tamu" name="email_tamu" placeholder="Masukkan email aktif Anda" required>
     </div>
 
-                  <!-- NAVIGASI UTAMA KONSISTEN -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/" style="font-family: 'Playfair Display', serif; color: #0E7490;"><i class="bi bi-water"></i> Five Star Horizon Hotel</a>
-            
-            <!-- Menu Tengah yang Tetap Aktif -->
-            <div class="mx-auto">
-                <ul class="navbar-nav d-flex flex-row gap-4">
-                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="{{ route('villas.index') }}" style="color: #0E7490; border-bottom: 2px solid #0E7490;">Villas</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('beachclub.index') }}">Beach Club</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('wellness.index') }}">Wellness</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <a href="/reservasi" class="btn btn-sm btn-dark px-3 rounded-pill">Book A Stay</a>
-            </div>
-        </div>
-    </nav>
+    <div class="mb-3">
+    <label for="pilihan_kamar" class="form-label fw-bold small text-secondary">PILIHAN TIPE KAMAR</label>
+    <select class="form-select" name="pilihan_kamar" required>
+    <option value="" disabled selected>Pilih tipe kamar hotel...</option>
+    <option value="standard">Standard Room (IDR 500k / Malam)</option>
+    <option value="deluxe">Deluxe Room (IDR 850k / Malam)</option>
+    <option value="suite">Executive Suite (IDR 1.5M / Malam)</option>
+</select>
+</div>
 
                     <!-- BARIS CHECK IN & CHECK OUT (Sejajar horizontal) -->
                     <div class="row g-3 mb-4">

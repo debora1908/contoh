@@ -165,8 +165,7 @@
                 <button class="nav-link" id="suite-tab" data-bs-toggle="tab" data-bs-target="#suite" type="button" role="tab">Executive Suite (Sisa: 15)</button>
             </li>
         </ul>
-
-        <div class="tab-content" id="roomTabsContent">
+<div class="tab-content" id="roomTabsContent">
             
             <div class="tab-pane fade show active table-container p-3" id="standard" role="tabpanel">
                 <div class="table-responsive">
@@ -180,18 +179,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><strong>Rian Gustam</strong><br><span class="text-muted small">rian@gmail.com</span></td>
-                                <td><span class="badge bg-secondary px-3 py-2">Room #102</span></td>
-                                <td>28 Jun 2026 - 30 Jun 2026 <span class="text-muted small">(2 Malam)</span></td>
-                                <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">Lunas</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Siti Aminah</strong><br><span class="text-muted small">siti@yahoo.com</span></td>
-                                <td><span class="badge bg-secondary px-3 py-2">Room #105</span></td>
-                                <td>28 Jun 2026 - 01 Jul 2026 <span class="text-muted small">(3 Malam)</span></td>
-                                <td><span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill">Pending</span></td>
-                            </tr>
+                            @if($standardBookings->isEmpty())
+                                <tr>
+                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada tamu di tipe Standard Room.</td>
+                                </tr>
+                            @else
+                                @foreach($standardBookings as $booking)
+                                <tr>
+                                    <td><strong>{{ $booking->nama_tamu }}</strong><br><span class="text-muted small">{{ $booking->email_tamu }}</span></td>
+                                    <td><span class="badge bg-secondary px-3 py-2">{{ $booking->nomor_kamar }}</span></td>
+                                    <td>{{ \Carbon\Carbon::parse($booking->check_in)->format('d M Y') }} - {{ \Carbon\Carbon::parse($booking->check_out)->format('d M Y') }}</td>
+                                    <td>
+                                        <span class="badge {{ $booking->status_bayar == 'Lunas' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning' }} px-3 py-2 rounded-pill">
+                                            {{ $booking->status_bayar }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -209,12 +214,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><strong>Budi Handoko</strong><br><span class="text-muted small">budi.h@gmail.com</span></td>
-                                <td><span class="badge bg-primary px-3 py-2">Room #204</span></td>
-                                <td>29 Jun 2026 - 02 Jul 2026 <span class="text-muted small">(3 Malam)</span></td>
-                                <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">Lunas</span></td>
-                            </tr>
+                            @if($deluxeBookings->isEmpty())
+                                <tr>
+                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada tamu di tipe Deluxe Room.</td>
+                                </tr>
+                            @else
+                                @foreach($deluxeBookings as $booking)
+                                <tr>
+                                    <td><strong>{{ $booking->nama_tamu }}</strong><br><span class="text-muted small">{{ $booking->email_tamu }}</span></td>
+                                    <td><span class="badge bg-primary px-3 py-2">{{ $booking->nomor_kamar }}</span></td>
+                                    <td>{{ \Carbon\Carbon::parse($booking->check_in)->format('d M Y') }} - {{ \Carbon\Carbon::parse($booking->check_out)->format('d M Y') }}</td>
+                                    <td>
+                                        <span class="badge {{ $booking->status_bayar == 'Lunas' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning' }} px-3 py-2 rounded-pill">
+                                            {{ $booking->status_bayar }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -232,12 +249,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><strong>Clara Angelica</strong><br><span class="text-muted small">clara@corporate.com</span></td>
-                                <td><span class="badge bg-dark px-3 py-2">Suite #01</span></td>
-                                <td>28 Jun 2026 - 05 Jul 2026 <span class="text-muted small">(7 Malam)</span></td>
-                                <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">Lunas</span></td>
-                            </tr>
+                            @if($suiteBookings->isEmpty())
+                                <tr>
+                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada tamu di tipe Executive Suite.</td>
+                                </tr>
+                            @else
+                                @foreach($suiteBookings as $booking)
+                                <tr>
+                                    <td><strong>{{ $booking->nama_tamu }}</strong><br><span class="text-muted small">{{ $booking->email_tamu }}</span></td>
+                                    <td><span class="badge bg-dark px-3 py-2">{{ $booking->nomor_kamar }}</span></td>
+                                    <td>{{ \Carbon\Carbon::parse($booking->check_in)->format('d M Y') }} - {{ \Carbon\Carbon::parse($booking->check_out)->format('d M Y') }}</td>
+                                    <td>
+                                        <span class="badge {{ $booking->status_bayar == 'Lunas' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning' }} px-3 py-2 rounded-pill">
+                                            {{ $booking->status_bayar }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

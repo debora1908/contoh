@@ -37,3 +37,7 @@ Route::get('/wellness', function () {
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
+use App\Http\Controllers\BookingController;
+
+Route::get('/admin/dashboard', [BookingController::class, 'index'])->name('admin.dashboard');
+Route::post('/admin/dashboard/store', [BookingController::class, 'store'])->name('booking.store');
