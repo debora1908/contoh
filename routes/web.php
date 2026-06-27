@@ -30,3 +30,6 @@ Route::get('/villas', function () {
 Route::get('/beach-club', function () {
     return view('beach-club.index');
 })->name('beachclub.index');
+Route::get('/wellness', function () {
+    return view('wellness.index');
+})->name('wellness.index');

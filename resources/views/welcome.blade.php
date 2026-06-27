@@ -105,7 +105,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('villas.index') }}">Villas</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('beachclub.index') }}">Beach Club</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Wellness</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('wellness.index') }}">Wellness</a></li>
                 </ul>
             </div>
             <a href="{{ route('reservasi.index') }}" class="btn btn-bali shadow-sm">Book A Stay</a>
