@@ -97,18 +97,22 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="bi bi-water"></i>Five Star Horizon Hotel</a>
-            <div class="collapse navbar-collapse justify-content-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('villas.index') }}">Villas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('beachclub.index') }}">Beach Club</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('wellness.index') }}">Wellness</a></li>
+            <a class="navbar-brand fw-bold" href="/"><i class="bi bi-water"></i> Five Star Horizon Hotel</a>
+            
+            <div class="mx-auto">
+                <ul class="navbar-nav d-flex flex-row gap-4">
+                    <li class="nav-item"><a class="nav-link fw-bold" href="/" style="color: #0E7490; border-bottom: 2px solid #0E7490;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('villas.index') }}">Villas</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('beachclub.index') }}">Beach Club</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('wellness.index') }}">Wellness</a></li>
                 </ul>
             </div>
-            <a href="{{ route('reservasi.index') }}" class="btn btn-bali shadow-sm">Book A Stay</a>
+
+            <div>
+                <a href="/reservasi" class="btn btn-sm btn-dark px-3 rounded-pill">Book A Stay</a>
+            </div>
         </div>
     </nav>
 

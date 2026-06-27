@@ -68,12 +68,23 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg shadow-sm mb-5">
+    <!-- NAVIGASI UTAMA KONSISTEN -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="/"><i class="bi bi-water"></i> Five Star Horizon Hotel</a>
+            <a class="navbar-brand fw-bold" href="/" style="font-family: 'Playfair Display', serif; color: #0E7490;"><i class="bi bi-water"></i> Five Star Horizon Hotel</a>
+            
+            <!-- Menu Tengah yang Tetap Aktif -->
+            <div class="mx-auto">
+                <ul class="navbar-nav d-flex flex-row gap-4">
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('villas.index') }}">Villas</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="{{ route('beachclub.index') }}" style="color: #0E7490; border-bottom: 2px solid #0E7490;">Beach Club</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('wellness.index') }}">Wellness</a></li>
+                </ul>
+            </div>
+
             <div>
-                <a href="/" class="text-secondary text-decoration-none small me-3"><i class="bi bi-house"></i> Beranda</a>
-                <a href="{{ route('reservasi.index') }}" class="btn btn-sm btn-dark">Book A Stay</a>
+                <a href="/reservasi" class="btn btn-sm btn-dark px-3 rounded-pill">Book A Stay</a>
             </div>
         </div>
     </nav>

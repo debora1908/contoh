@@ -33,3 +33,7 @@ Route::get('/beach-club', function () {
 Route::get('/wellness', function () {
     return view('wellness.index');
 })->name('wellness.index');
+// PINDAHKAN ATAU UBAH JADI SEPERTI INI UNTUK SEMENTARA:
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
