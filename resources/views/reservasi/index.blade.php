@@ -68,9 +68,18 @@
     <nav class="navbar navbar-expand-lg mb-5 shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="/"><i class="bi bi-water"></i> Five Star Horizon Hotel</a>
-            <div>
+            <div class="d-flex align-items-center">
                 <a href="/kamar" class="btn btn-outline-secondary btn-sm me-2">Manajemen Kamar</a>
-                <a href="/" class="text-secondary text-decoration-none small"><i class="bi bi-house"></i> Beranda</a>
+                <a href="/" class="text-secondary text-decoration-none small me-3"><i class="bi bi-house"></i> Beranda</a>
+                
+                @auth
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-right"></i> Keluar</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-dark"><i class="bi bi-person-lock"></i> Login Admin</a>
+                @endauth
             </div>
         </div>
     </nav>
