@@ -26,3 +26,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/villas', function () {
     return view('villas.index');
 })->name('villas.index');
+// Route untuk halaman galeri Beach Club
+Route::get('/beach-club', function () {
+    return view('beach-club.index');
+})->name('beachclub.index');
