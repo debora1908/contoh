@@ -41,3 +41,10 @@ use App\Http\Controllers\BookingController;
 
 Route::get('/admin/dashboard', [BookingController::class, 'index'])->name('admin.dashboard');
 Route::post('/admin/dashboard/store', [BookingController::class, 'store'])->name('booking.store');
+
+
+// Route untuk menampilkan halaman pembayaran berdasarkan ID data tamu
+Route::get('/booking/pembayaran/{id}', [BookingController::class, 'pembayaran'])->name('booking.pembayaran');
+
+// Route untuk memproses aksi tombol "Saya Sudah Transfer"
+Route::post('/booking/konfirmasi/{id}', [BookingController::class, 'konfirmasi'])->name('booking.konfirmasi');

@@ -29,6 +29,7 @@ class BookingController extends Controller
             'check_out' => 'required|date|after:check_in',
         ]);
 
+
         // 2. Logika acak nomor kamar otomatis sebagai contoh simulasi HMS
         $randomRoom = match($request->pilihan_kamar) {
             'standard' => 'Room #' . rand(101, 199),
@@ -37,17 +38,41 @@ class BookingController extends Controller
         };
 
         // 3. Simpan data baru ke database table bookings
-        Booking::create([
+        $booking = Booking::create([
             'nama_tamu' => $request->nama_tamu,
             'email_tamu' => $request->email_tamu,
             'pilihan_kamar' => $request->pilihan_kamar,
             'nomor_kamar' => $randomRoom,
             'check_in' => $request->check_in,
             'check_out' => $request->check_out,
-            'status_bayar' => 'Pending' // Default awal input manual
+            'status_bayar' => 'Pending' 
         ]);
+        
+        /* ❌ HAPUS BAGIAN INI KARENA MEMBUAT CODINGAN DOUBLE / DUPLIKAT:
+           
+           // 1. Ganti bagian akhir fungsi store Anda yang lama
+           public function store(Request $request)
+           {
+               $booking = Booking::create([ ... ]);
+        */
 
-        return redirect()->back()->with('success', 'Data tamu berhasil diinput ke ledger database!');
+        //  PERBAIKI DI SINI: Cukup panggil return redirect langsung ke halaman pembayaran
+        return redirect()->route('booking.pembayaran', $booking->id);
     }
 
+    //  TAMBAHKAN FUNGSI BARU INI (Halaman Pembayaran)
+    public function pembayaran($id)
+    {
+        $booking = Booking::findOrFail($id);
+        return view('reservasi.pembayaran', compact('booking'));
+    }
+
+    //  TAMBAHKAN FUNGSI BARU INI (Tombol "Saya Sudah Transfer")
+    public function konfirmasi(Request $request, $id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->update(['status_bayar' => 'Lunas']); 
+
+        return redirect('/reservasi')->with('success', 'Terima kasih! Pembayaran Anda sedang diverifikasi.');
+    }
 }
