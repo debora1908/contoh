@@ -16,8 +16,16 @@
 <body>
 
 <div class="container py-5">
+
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
+            @if(session('success'))
+                <div class="alert alert-success border-0 shadow-sm rounded-3 mb-4 text-center py-3">
+                    <i class="bi bi-check-circle-fill fs-4 d-block mb-1 text-success"></i>
+                    <strong>{{ session('success') }}</strong>
+                </div>
+            @endif
+
             <div class="text-center mb-4">
                 <h2 class="hotel-brand">Five Star Horizon Hotel</h2>
                 <p class="text-muted small">Invois Reservasi Kamar #{{ $booking->id }}</p>
@@ -50,6 +58,7 @@
                     </tr>
                 </table>
             </div>
+            @if($booking->status_bayar == 'Pending')
 
             <div class="card payment-card p-4">
                 <h5 class="fw-bold mb-3"><i class="bi bi-wallet2 text-primary me-2"></i>Metode Pembayaran</h5>
@@ -70,8 +79,31 @@
                     </button>
                 </form>
             </div>
-        </div>
+            @else
+            <div class="card payment-card p-4 text-center border border-success bg-success bg-opacity-5">
+                    <div class="mb-3">
+                        <span class="badge bg-success fs-6 px-4 py-2 rounded-pill">
+                            <i class="bi bi-patch-check-fill me-2"></i>KUITANSI RESMI (LUNAS)
+                        </span>
+                    </div>
+                    
+                    <div class="p-3 bg-white rounded-3 shadow-sm border mb-3">
+                        <span class="text-muted small d-block mb-1">Nomor Kamar Anda:</span>
+                        <h2 class="fw-bold text-primary mb-1">{{ $booking->nomor_kamar }}</h2>
+                        <small class="text-muted d-block" style="font-size: 0.75rem;">
+                            *Tunjukkan nomor kamar ini beserta KTP saat check-in di Front Office.
+                        </small>
+                    </div>
+
+                    <p class="text-muted small mb-0">
+                        Diverifikasi otomatis pada: {{ \Carbon\Carbon::parse($booking->updated_at)->format('d M Y H:i') }} WIB
+                    </p>
+                </div>
+
+            @endif </div>
     </div>
+        
+    
 </div>
 
 </body>

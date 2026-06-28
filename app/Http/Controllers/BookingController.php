@@ -69,10 +69,12 @@ class BookingController extends Controller
 
     //  TAMBAHKAN FUNGSI BARU INI (Tombol "Saya Sudah Transfer")
     public function konfirmasi(Request $request, $id)
-    {
-        $booking = Booking::findOrFail($id);
-        $booking->update(['status_bayar' => 'Lunas']); 
+    {$booking = Booking::findOrFail($id);
+    
+    // 1. Ubah status di database menjadi Lunas
+    $booking->update(['status_bayar' => 'Lunas']); 
 
-        return redirect('/reservasi')->with('success', 'Terima kasih! Pembayaran Anda sedang diverifikasi.');
+    // 2. Alihkan kembali ke halaman yang sama (pembayaran) dengan membawa pesan sukses/kuitansi
+    return redirect()->route('booking.pembayaran', $id)->with('success', 'Pembayaran Berhasil! Kuitansi Anda telah diterbitkan.');
     }
 }
