@@ -16,7 +16,9 @@ class Booking extends Model
         'nomor_kamar',
         'check_in',
         'check_out',
-        'status_bayar'
+        'status_bayar',
+        'metode_bayar', 
+        'kode_unik'
     ];
   //
 }

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->date('check_in');          // Tanggal Check In
             $table->date('check_out');         // Tanggal Check Out
             $table->string('status_bayar')->default('Pending'); // Status awal
+            $table->integer('kode_unik')->nullable();
+            $table->string('metode_bayar')->nullable();
             $table->timestamps();
         });
     }

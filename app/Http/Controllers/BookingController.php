@@ -36,7 +36,14 @@ class BookingController extends Controller
             'deluxe'   => 'Room #' . rand(201, 299),
             'suite'    => 'Suite #' . rand(1, 50),
         };
-
+        // Kode ini nanti otomatis ditambahkan jika tamu memilih metode "Transfer"
+        
+       $kodeUnik = match($request->pilihan_kamar) {
+            'standard' => 50,   // Menghasilkan akhiran 050
+            'deluxe'   => 100,  // Menghasilkan akhiran 100
+            'suite'    => 150,  // Menghasilkan akhiran 150
+            default    => 0
+       };
         // 3. Simpan data baru ke database table bookings
         $booking = Booking::create([
             'nama_tamu' => $request->nama_tamu,
@@ -45,7 +52,9 @@ class BookingController extends Controller
             'nomor_kamar' => $randomRoom,
             'check_in' => $request->check_in,
             'check_out' => $request->check_out,
-            'status_bayar' => 'Pending' 
+            'status_bayar' => 'Pending' ,
+            'kode_unik' => $kodeUnik,      
+            'metode_bayar' => null
         ]);
         
         /* ❌ HAPUS BAGIAN INI KARENA MEMBUAT CODINGAN DOUBLE / DUPLIKAT:
@@ -69,10 +78,19 @@ class BookingController extends Controller
 
     //  TAMBAHKAN FUNGSI BARU INI (Tombol "Saya Sudah Transfer")
     public function konfirmasi(Request $request, $id)
-    {$booking = Booking::findOrFail($id);
-    
-    // 1. Ubah status di database menjadi Lunas
-    $booking->update(['status_bayar' => 'Lunas']); 
+    {
+        $booking = Booking::findOrFail($id);
+        
+        // Validasi input untuk memastikan metode pembayaran dipilih
+        $request->validate([
+            'metode_bayar' => 'required|in:Cash,Transfer'
+        ]);
+
+        // Update status menjadi Lunas dan simpan metode pembayaran yang dipilih tamu
+        $booking->update([
+            'status_bayar' => 'Lunas',
+            'metode_bayar' => $request->metode_bayar
+        ]);
 
     // 2. Alihkan kembali ke halaman yang sama (pembayaran) dengan membawa pesan sukses/kuitansi
     return redirect()->route('booking.pembayaran', $id)->with('success', 'Pembayaran Berhasil! Kuitansi Anda telah diterbitkan.');
