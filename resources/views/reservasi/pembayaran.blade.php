@@ -11,6 +11,8 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; }
         .payment-card { background: #ffffff; border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .hotel-brand { font-family: 'Playfair Display', serif; font-weight: 700; color: #0f172a; }
+        
+        
     </style>
 </head>
 <body>
@@ -114,47 +116,48 @@
                 <form action="{{ route('booking.konfirmasi', $booking->id) }}" method="POST">
                     @csrf
                     <div class="card payment-card p-4">
-                        <h5 class="fw-bold mb-3"><i class="bi bi-wallet2 text-primary me-2"></i>Pilih Metode Pembayaran</h5>
+                        <h5 class="fw-bold mb-4"><i class="bi bi-wallet2 text-primary me-2"></i>Pilih Metode Pembayaran</h5>
                         
                         <div class="mb-3">
-                            <label class="w-100">
-                                <input type="radio" name="metode_bayar" value="Cash" class="card-input-element d-none" checked onclick="togglePaymentDetail('Cash')">
-                                <div class="method-box d-flex align-items-center justify-content-between">
+                            <input type="radio" name="metode_bayar" value="Cash" id="methodCash" class="btn-check" checked onclick="togglePaymentDetail('Cash')">
+                            <label class="btn text-start p-3 w-100 border border-2 rounded-3 text-dark custom-method-label" for="methodCash">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <strong class="d-block"><i class="bi bi-cash-coin text-success me-2"></i>Bayar Cash / Tunai</strong>
+                                        <strong class="d-block mb-1"><i class="bi bi-cash-coin text-success me-2"></i>Bayar Cash / Tunai</strong>
                                         <small class="text-muted">Bayar langsung di resepsionis saat check-in</small>
                                     </div>
-                                    <div class="fw-bold text-dark">IDR {{ number_format($tarifDasar, 0, ',', '.') }}</div>
+                                    <div class="fw-bold text-dark ms-2">IDR {{ number_format($tarifDasar, 0, ',', '.') }}</div>
                                 </div>
                             </label>
                         </div>
 
                         <div class="mb-4">
-                            <label class="w-100">
-                                <input type="radio" name="metode_bayar" value="Transfer" class="card-input-element d-none" onclick="togglePaymentDetail('Transfer')">
-                                <div class="method-box d-flex align-items-center justify-content-between">
+                            <input type="radio" name="metode_bayar" value="Transfer" id="methodTransfer" class="btn-check" onclick="togglePaymentDetail('Transfer')">
+                            <label class="btn text-start p-3 w-100 border border-2 rounded-3 text-dark custom-method-label" for="methodTransfer">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <strong class="d-block"><i class="bi bi-bank text-primary me-2"></i>Transfer Bank</strong>
+                                        <strong class="d-block mb-1"><i class="bi bi-bank text-primary me-2"></i>Transfer Bank</strong>
                                         <small class="text-muted">Wajib transfer pas hingga 3 digit terakhir</small>
                                     </div>
-                                    <div class="fw-bold text-primary">IDR {{ number_format($totalTransfer, 0, ',', '.') }}</div>
+                                    <div class="fw-bold text-primary ms-2">IDR {{ number_format($totalTransfer, 0, ',', '.') }}</div>
                                 </div>
                             </label>
                         </div>
 
-                        <div id="transferDetailPanel" class="bg-light p-3 rounded-3 mb-4 d-none">
-                            <span class="text-uppercase fw-bold text-muted small d-block">Bank BCA (Horizon Hotel)</span>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <strong class="fs-5 text-dark">8045-2211-99</strong>
-                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="navigator.clipboard.writeText('8045221199')">Salin Rek</button>
+                        <div id="transferDetailPanel" class="bg-light p-3 rounded-3 mb-4 d-none border">
+                            <span class="text-uppercase fw-bold text-muted small d-block mb-1" style="font-size: 0.72rem;">Rekening Pembayaran Hotel:</span>
+                            <div class="d-flex align-items-center justify-content-between bg-white p-2 rounded border mb-2">
+                                <strong class="fs-5 text-dark font-monospace">Bank BCA — 8045-2211-99</strong>
+                                <button type="button" class="btn btn-sm btn-secondary" onclick="navigator.clipboard.writeText('8045221199')">Salin</button>
                             </div>
-                            <small class="text-danger d-block mt-2 fw-semibold">
-                                *Harap transfer tepat sebesar: IDR {{ number_format($totalTransfer, 0, ',', '.') }}
+                            <small class="text-danger d-block fw-bold">
+                                <i class="bi bi-exclamation-circle-fill me-1"></i>
+                                PENTING: Mohon transfer tepat sebesar IDR {{ number_format($totalTransfer, 0, ',', '.') }}
                             </small>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-3 shadow">
-                            Konfirmasi Pembayaran
+                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-3 shadow text-uppercase">
+                            Konfirmasi Pembayaran <i class="bi bi-arrow-right-short ms-1"></i>
                         </button>
                     </div>
                 </form>
