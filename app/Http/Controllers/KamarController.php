@@ -11,7 +11,8 @@ class KamarController extends Controller
     public function index()
     {
         $kamars = Kamar::all();
-        return view('kamar.index', compact('kamars'));
+        // Mengembalikan ke tampilan resort putih Anda yang lama
+        return view('kamar.index', compact('kamars')); 
     }
 
     // Fungsi untuk menyimpan data kamar
@@ -32,4 +33,12 @@ class KamarController extends Controller
 
         return redirect()->back()->with('success', 'Kamar berhasil ditambahkan!');
     }
+    public function destroy($id)
+    {
+        $kamar = Kamar::findOrFail($id);
+        $kamar->delete();
+
+        return redirect()->back()->with('success', 'Kamar berhasil dihapus!');
+    }
+
 }

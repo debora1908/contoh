@@ -10,10 +10,18 @@ return new class extends Migration
     {
         Schema::create('kamars', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_kamar')->unique();
-            $table->string('tipe_kamar'); 
-            $table->integer('harga_per_malam');
-            $table->enum('status', ['Tersedia', 'Terisi', 'Kotor'])->default('Tersedia');
+           $table->string('nomor_kamar');
+    $table->string('tipe_kamar');
+    $table->integer('harga_per_malam');
+    $table->enum('status', [
+        'Tersedia',
+        'Terisi',
+        'Kotor',
+        'Perbaikan'
+    ])->default('Tersedia');
+
+    $table->unique(['nomor_kamar', 'tipe_kamar']);
+
             $table->timestamps();
         });
     }

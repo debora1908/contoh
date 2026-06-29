@@ -153,9 +153,9 @@
     <label for="pilihan_kamar" class="form-label fw-bold small text-secondary">PILIHAN TIPE KAMAR</label>
     <select class="form-select" name="pilihan_kamar" required>
     <option value="" disabled selected>Pilih tipe kamar hotel...</option>
-    <option value="standard">Standard Room (IDR 500k / Malam)</option>
-    <option value="deluxe">Deluxe Room (IDR 850k / Malam)</option>
-    <option value="suite">Executive Suite (IDR 1.5M / Malam)</option>
+    <option value="standard">Standard Room</option>
+    <option value="deluxe">Deluxe Room </option>
+    <option value="suite">Executive Suite </option>
 </select>
 </div>
 

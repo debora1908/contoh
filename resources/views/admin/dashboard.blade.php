@@ -116,10 +116,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span>🛏️</span> Manajemen Kamar
-                        </a>
-                    </li>
+    <a href="/admin/manajemen" class="nav-link active">
+        <i class="bi bi-door-open"></i> Manajemen Kamar
+    </a>
+</li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <span>📖</span> Reservasi Tamu
