@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
     'email' => 'admin@hotel.com',
     'password' => bcrypt('password123'),
         ]);
+        
     }
 }

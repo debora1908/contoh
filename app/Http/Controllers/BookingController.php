@@ -95,4 +95,62 @@ class BookingController extends Controller
     // 2. Alihkan kembali ke halaman yang sama (pembayaran) dengan membawa pesan sukses/kuitansi
     return redirect()->route('booking.pembayaran', $id)->with('success', 'Pembayaran Berhasil! Kuitansi Anda telah diterbitkan.');
     }
+    public function edit($id)
+    {
+        // MENCARI DATA BOOKING BERDASARKAN ID, JIKA TIDAK ADA MAKA ERROR 404
+        $booking = Booking::findOrFail($id);
+        
+        // MENGARAHKAN KE FILE VIEW 'admin/edit.blade.php' SAMBIL MEMBAWA DATA
+        return view('admin.edit', compact('booking')); 
+    }
+
+    // FUNGSI BARU 2: MEMPROSES PERUBAHAN DATA YANG DIKIRIM DARI FORM EDIT
+    public function update(Request $request, $id)
+    {
+        // MENCARI DATA BOOKING YANG AKAN DIUBAH
+        $booking = Booking::findOrFail($id);
+
+        // MELAKUKAN VALIDASI DATA TERHADAP INPUTAN BARU DARI ADMIN
+        $request->validate([
+            'nama_tamu' => 'required|string|max:255',
+            'email_tamu' => 'required|email',
+            'pilihan_kamar' => 'required|in:standard,deluxe,suite',
+            'nomor_kamar' => 'required|string',
+            'check_in' => 'required|date',
+            'check_out' => 'required|date|after:check_in',
+            'status_bayar' => 'required|in:Pending,Lunas',
+        ]);
+
+        // MENYIMPAN PERUBAHAN DATA TERBARU KE DATABASE
+        $booking->update([
+            'nama_tamu' => $request->nama_tamu,
+            'email_tamu' => $request->email_tamu,
+            'pilihan_kamar' => $request->pilihan_kamar,
+            'nomor_kamar' => $request->nomor_kamar,
+            'check_in' => $request->check_in,
+            'check_out' => $request->check_out,
+            'status_bayar' => $request->status_bayar,
+        ]);
+
+        // MENGALIHKAN KEMBALI KEDAHSBOARD ADMIN DENGAN NOTIFIKASI SUKSES
+        return redirect()->route('admin.dashboard')->with('success', 'Data transaksi tamu berhasil diperbarui.');
+    }
+
+    // FUNGSI BARU 3: MENGHAPUS LOG DATA TRANSAKSI TAMU BERDASARKAN ID
+    public function destroy($id)
+    {
+        // MENCARI DATA YANG AKAN DIHAPUS
+        $booking = Booking::findOrFail($id);
+        
+        // MENGEKSEKUSI PERINTAH HAPUS DATA
+        $booking->delete();
+
+        // KEMBALI KE HALAMAN SEBELUMNYA DENGAN PESAN SUKSES HAPUS
+        return redirect()->back()->with('success', 'Data log transaksi tamu berhasil dihapus.');
+    }
+
+    // =========================================================================
+    // AKHIRAN BAGIAN BARU: SELESAI
+    // =========================================================================
+
 }

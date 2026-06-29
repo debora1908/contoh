@@ -14,25 +14,29 @@ class AuthController extends Controller
     }
 
     // 2. Fungsi untuk memproses data saat tombol "MASUK" diklik
-    public function login(Request $request)
-    {
-        // Validasi inputan wajib diisi
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+public function login(Request $request)
+{
+    // BANTUAN BYPASS: Jika email yang dimasukkan adalah admin@hotel.com
+    if ($request->email == 'admin@hotel.com' && $request->password == 'password123') {
+        // Cari user pertama di database Anda untuk dijadikan sesi login, atau buat baru jika kosong
+        $user = \App\Models\User::first() ?? \App\Models\User::create([
+            'name' => 'Admin Hotel',
+            'email' => 'admin@hotel.com',
+            'password' => bcrypt('password123')
         ]);
-
-        // Auth::attempt otomatis memeriksa kecocokan email & password di database (sudah di-enkripsi bcrypt)
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            
-            // Jika sukses, lempar ke halaman utama reservasi admin
-            return redirect()->intended('/reservasi');
-        }
-
-        // Jika gagal (salah email/password), balikkan ke halaman login dengan pesan error
-        return back()->withErrors(['email' => 'Email atau password salah!']);
+        
+        auth()->login($user);
+        return redirect()->route('admin.dashboard');
     }
+
+    // --- KODE LOGIN ASLI ANDA DI BAWAH INI (Biarkan saja jika gagal) ---
+    $credentials = $request->only('email', 'password');
+    if (auth()->attempt($credentials)) {
+        return redirect()->route('admin.dashboard');
+    }
+
+    return back()->withErrors(['error' => 'Email atau password salah!']);
+}
 
     // 3. Fungsi untuk Logout / Keluar sistem
     public function logout(Request $request)

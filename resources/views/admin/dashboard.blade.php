@@ -166,33 +166,52 @@
             </li>
         </ul>
 <div class="tab-content" id="roomTabsContent">
+       <div class="tab-content" id="roomTabsContent">
             
             <div class="tab-pane fade show active table-container p-3" id="standard" role="tabpanel">
                 <div class="table-responsive">
-                    <table class="table table-hms mb-0 vertical-middle">
+                    <table class="table table-hms mb-0">
                         <thead>
                             <tr>
                                 <th>Nama Tamu</th>
                                 <th>Nomor Kamar</th>
                                 <th>Tanggal Check In / Out</th>
                                 <th>Status Pembayaran</th>
+                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if($standardBookings->isEmpty())
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada tamu di tipe Standard Room.</td>
+                                    <td colspan="5" class="text-center py-4 text-muted">Belum ada tamu di tipe Standard Room.</td>
                                 </tr>
                             @else
                                 @foreach($standardBookings as $booking)
                                 <tr>
-                                    <td><strong>{{ $booking->nama_tamu }}</strong><br><span class="text-muted small">{{ $booking->email_tamu }}</span></td>
+                                    <td>
+                                        <strong>{{ $booking->nama_tamu }}</strong><br>
+                                        <span class="text-muted small">{{ $booking->email_tamu }}</span>
+                                    </td>
                                     <td><span class="badge bg-secondary px-3 py-2">{{ $booking->nomor_kamar }}</span></td>
                                     <td>{{ \Carbon\Carbon::parse($booking->check_in)->format('d M Y') }} - {{ \Carbon\Carbon::parse($booking->check_out)->format('d M Y') }}</td>
                                     <td>
                                         <span class="badge {{ $booking->status_bayar == 'Lunas' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning' }} px-3 py-2 rounded-pill">
                                             {{ $booking->status_bayar }}
                                         </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning btn-sm align-self-start">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </a>
+                                            <form action="{{ route('booking.destroy', $booking->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                                    <i class="bi bi-trash"></i> Hapus
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -211,23 +230,41 @@
                                 <th>Nomor Kamar</th>
                                 <th>Tanggal Check In / Out</th>
                                 <th>Status Pembayaran</th>
+                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if($deluxeBookings->isEmpty())
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada tamu di tipe Deluxe Room.</td>
+                                    <td colspan="5" class="text-center py-4 text-muted">Belum ada tamu di tipe Deluxe Room.</td>
                                 </tr>
                             @else
                                 @foreach($deluxeBookings as $booking)
                                 <tr>
-                                    <td><strong>{{ $booking->nama_tamu }}</strong><br><span class="text-muted small">{{ $booking->email_tamu }}</span></td>
+                                    <td>
+                                        <strong>{{ $booking->nama_tamu }}</strong><br>
+                                        <span class="text-muted small">{{ $booking->email_tamu }}</span>
+                                    </td>
                                     <td><span class="badge bg-primary px-3 py-2">{{ $booking->nomor_kamar }}</span></td>
                                     <td>{{ \Carbon\Carbon::parse($booking->check_in)->format('d M Y') }} - {{ \Carbon\Carbon::parse($booking->check_out)->format('d M Y') }}</td>
                                     <td>
                                         <span class="badge {{ $booking->status_bayar == 'Lunas' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning' }} px-3 py-2 rounded-pill">
                                             {{ $booking->status_bayar }}
                                         </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning btn-sm align-self-start">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </a>
+                                            <form action="{{ route('booking.destroy', $booking->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                                    <i class="bi bi-trash"></i> Hapus
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -246,23 +283,41 @@
                                 <th>Nomor Kamar</th>
                                 <th>Tanggal Check In / Out</th>
                                 <th>Status Pembayaran</th>
+                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if($suiteBookings->isEmpty())
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada tamu di tipe Executive Suite.</td>
+                                    <td colspan="5" class="text-center py-4 text-muted">Belum ada tamu di tipe Executive Suite.</td>
                                 </tr>
                             @else
                                 @foreach($suiteBookings as $booking)
                                 <tr>
-                                    <td><strong>{{ $booking->nama_tamu }}</strong><br><span class="text-muted small">{{ $booking->email_tamu }}</span></td>
+                                    <td>
+                                        <strong>{{ $booking->nama_tamu }}</strong><br>
+                                        <span class="text-muted small">{{ $booking->email_tamu }}</span>
+                                    </td>
                                     <td><span class="badge bg-dark px-3 py-2">{{ $booking->nomor_kamar }}</span></td>
                                     <td>{{ \Carbon\Carbon::parse($booking->check_in)->format('d M Y') }} - {{ \Carbon\Carbon::parse($booking->check_out)->format('d M Y') }}</td>
                                     <td>
                                         <span class="badge {{ $booking->status_bayar == 'Lunas' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning' }} px-3 py-2 rounded-pill">
                                             {{ $booking->status_bayar }}
                                         </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning btn-sm align-self-start">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </a>
+                                            <form action="{{ route('booking.destroy', $booking->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                                    <i class="bi bi-trash"></i> Hapus
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
