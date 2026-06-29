@@ -8,13 +8,60 @@ class BookingController extends Controller
 {
     // Menampilkan Dashboard beserta data terpisah per tipe kamar
     public function index()
-    {
-        // Mengambil data dari database dan mengelompokkannya sesuai gambar image_9a5580.png
+    {// 1. MENGAMBIL DATA LOG TRANSAKSI PER TIPE KAMAR (KODE LAMA ANDA)
         $standardBookings = Booking::where('pilihan_kamar', 'standard')->get();
         $deluxeBookings   = Booking::where('pilihan_kamar', 'deluxe')->get();
         $suiteBookings    = Booking::where('pilihan_kamar', 'suite')->get();
 
-        return view('admin.dashboard', compact('standardBookings', 'deluxeBookings', 'suiteBookings'));
+        // 2. LOGIKA MENGHITUNG STATISTIK OKUPANSI SECARA DINAMIS
+        $totalInventory = 150; // Kapasitas maksimal hotel
+        
+        // Menghitung jumlah baris data di database untuk tahu kamar yang terisi
+        $kamarTerisi    = Booking::count(); 
+        
+        // Sisa kamar tersedia adalah total inventory dikurangi yang terisi
+        $kamarTersedia  = $totalInventory - $kamarTerisi;
+
+        // 3. LOGIKA MENGHITUNG ESTIMASI PENDAPATAN DARI BOOKING YANG LUNAS
+        $totalPendapatan = 0;
+        $semuaBookingLunas = Booking::where('status_bayar', 'Lunas')->get();
+
+        foreach ($semuaBookingLunas as $booking) {
+            // Hitung durasi malam menginap
+            $checkIn = \Carbon\Carbon::parse($booking->check_in);
+            $checkOut = \Carbon\Carbon::parse($booking->check_out);
+            $durasiMalam = $checkIn->diffInDays($checkOut);
+            
+            if ($durasiMalam == 0) { $durasiMalam = 1; } // Minimal hitung 1 malam
+
+            // Simulasi harga kamar per malam
+            $hargaPerMalam = match($booking->pilihan_kamar) {
+                'standard' => 300000,
+                'deluxe'   => 500000,
+                'suite'    => 1000000,
+                default    => 0
+            };
+
+            // Akumulasikan (Harga Kamar x Durasi) + Kode Unik Transfer
+            $totalPendapatan += ($hargaPerMalam * $durasiMalam) + ($booking->kode_unik ?? 0);
+        }
+
+        // Format tampilan rupiah ringkas (Contoh: IDR 42.5M)
+        $pendapatanFormatted = 'IDR ' . number_format($totalPendapatan / 1000000, 1, ',', '.') . 'M';
+        if ($totalPendapatan < 1000000) {
+            $pendapatanFormatted = 'IDR ' . number_format($totalPendapatan, 0, ',', '.');
+        }
+
+        // 4. MENGIRIM DATA LAMA DAN DATA STATISTIK BARU KE VIEW DASHBOARD
+        return view('admin.dashboard', compact(
+            'standardBookings', 
+            'deluxeBookings', 
+            'suiteBookings',
+            'totalInventory',
+            'kamarTerisi',
+            'kamarTersedia',
+            'pendapatanFormatted'
+        ));
     }
 
     // Memproses input manual dari Form Check-In

@@ -105,52 +105,55 @@
             </div>
         </div>
 
-        <div class="row g-4 mb-5">
-            <div class="col-md-6 col-lg-3">
-                <div class="card stat-card p-3">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <span class="text-muted small fw-bold text-uppercase d-block mb-1">Total Inventory</span>
-                            <h3 class="fw-bold m-0 text-dark">150 Kamar</h3>
-                        </div>
-                        <div class="icon-box bg-primary-subtle text-primary"><i class="bi bi-building"></i></div>
-                    </div>
+  <div class="row g-4 mb-5">
+    <div class="col-md-6 col-lg-3">
+        <div class="card stat-card p-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <span class="text-muted small fw-bold text-uppercase d-block mb-1">Total Inventory</span>
+                    <h3 class="fw-bold m-0 text-dark">{{ $totalInventory }} Kamar</h3>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card stat-card p-3">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <span class="text-muted small fw-bold text-uppercase d-block mb-1">Kamar Terisi (Occ)</span>
-                            <h3 class="fw-bold m-0 text-danger">87 Kamar</h3>
-                        </div>
-                        <div class="icon-box bg-danger-subtle text-danger"><i class="bi bi-door-closed-fill"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card stat-card p-3">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <span class="text-muted small fw-bold text-uppercase d-block mb-1">Kamar Tersedia (Vacant)</span>
-                            <h3 class="fw-bold m-0 text-success">63 Kamar</h3>
-                        </div>
-                        <div class="icon-box bg-success-subtle text-success"><i class="bi bi-door-open-fill"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card stat-card p-3">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <span class="text-muted small fw-bold text-uppercase d-block mb-1">Pendapatan Hari Ini</span>
-                            <h3 class="fw-bold m-0 text-dark">IDR 42.5M</h3>
-                        </div>
-                        <div class="icon-box bg-warning-subtle text-warning"><i class="bi bi-wallet2"></i></div>
-                    </div>
-                </div>
+                <div class="icon-box bg-primary-subtle text-primary"><i class="bi bi-building"></i></div>
             </div>
         </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-3">
+        <div class="card stat-card p-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <span class="text-muted small fw-bold text-uppercase d-block mb-1">Kamar Terisi (Occ)</span>
+                    <h3 class="fw-bold m-0 text-danger">{{ $kamarTerisi }} Kamar</h3>
+                </div>
+                <div class="icon-box bg-danger-subtle text-danger"><i class="bi bi-door-closed-fill"></i></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-3">
+        <div class="card stat-card p-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <span class="text-muted small fw-bold text-uppercase d-block mb-1">Kamar Tersedia (Vacant)</span>
+                    <h3 class="fw-bold m-0 text-success">{{ $kamarTersedia }} Kamar</h3>
+                </div>
+                <div class="icon-box bg-success-subtle text-success"><i class="bi bi-door-open-fill"></i></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-3">
+        <div class="card stat-card p-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <span class="text-muted small fw-bold text-uppercase d-block mb-1">Total Pendapatan Lunas</span>
+                    <h3 class="fw-bold m-0 text-dark">{{ $pendapatanFormatted }}</h3>
+                </div>
+                <div class="icon-box bg-warning-subtle text-warning"><i class="bi bi-wallet2"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
 
         <h4 class="fw-bold mb-3" style="font-family: 'Playfair Display', serif;"><i class="bi bi-list-stars text-teal"></i> Manajer Log Transaksi Tamu</h4>
         
