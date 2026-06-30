@@ -21,15 +21,15 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/villas', function () {
-    return view('villas');
+    return view('villas.index');
 })->name('villas.index');
 
 Route::get('/beachclub', function () {
-    return view('beachclub');
+    return view('Beach-club.index');
 })->name('beachclub.index');
 
 Route::get('/wellness', function () {
-    return view('wellness');
+    return view('wellness.index');
 })->name('wellness.index');
 
 /*
