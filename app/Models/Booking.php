@@ -11,14 +11,15 @@ class Booking extends Model
 
     protected $fillable = [
         'nama_tamu',
-        'email_tamu',
-        'pilihan_kamar',
-        'nomor_kamar',
-        'check_in',
-        'check_out',
-        'status_bayar',
-        'metode_bayar', 
-        'kode_unik'
+    'email_tamu',
+    'pilihan_kamar',
+    'nomor_kamar',
+    'check_in',
+    'check_out',
+    'status_bayar',
+    'status_menginap',
+    'metode_bayar',
+    'kode_unik'
     ];
   //
 }

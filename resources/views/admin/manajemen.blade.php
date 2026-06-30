@@ -156,46 +156,52 @@
 
     <hr>
 
-    <ul class="menu">
+<ul class="menu">
 
-        <li>
-            <a href="/admin/dashboard"
-               class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
-                <i class="bi bi-speedometer2"></i>
-                Dashboard
-            </a>
-        </li>
+    <li>
+        <a href="{{ route('admin.dashboard') }}"
+           class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
+            <i class="bi bi-speedometer2"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
 
-        <li>
-            <a href="/admin/manajemen"
-               class="{{ request()->is('admin/manajemen') ? 'active' : '' }}">
-                <i class="bi bi-door-open-fill"></i>
-                Manajemen Kamar
-            </a>
-        </li>
+    <li>
+        <a href="{{ route('admin.manajemen.index') }}"
+           class="{{ request()->is('admin/manajemen*') ? 'active' : '' }}">
+            <i class="bi bi-door-open-fill"></i>
+            <span>Manajemen Kamar</span>
+        </a>
+    </li>
 
-        <li>
-            <a href="/admin/reservasi">
-                <i class="bi bi-journal-bookmark-fill"></i>
-                Reservasi Tamu
-            </a>
-        </li>
+    <li>
+        <a href="{{ route('admin.reservasi.index') }}"
+           class="{{ request()->is('admin/reservasi*') ? 'active' : '' }}">
+            <i class="bi bi-journal-bookmark-fill"></i>
+            <span>Reservasi Tamu</span>
+        </a>
+    </li>
 
-        <li>
-            <a href="/admin/pengguna">
-                <i class="bi bi-people-fill"></i>
-                Pengguna
-            </a>
-        </li>
+    <li>
+        <a href="/admin/pengguna"
+           class="{{ request()->is('admin/pengguna*') ? 'active' : '' }}">
+            <i class="bi bi-people-fill"></i>
+            <span>Pengguna</span>
+        </a>
+    </li>
 
-        <li>
-            <a href="/logout">
+    <li>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit"
+                style="width:100%;background:none;border:none;padding:14px 18px;text-align:left;color:#cbd5e1;display:flex;align-items:center;gap:12px;border-radius:12px;">
                 <i class="bi bi-box-arrow-right"></i>
-                Logout
-            </a>
-        </li>
+                <span>Logout</span>
+            </button>
+        </form>
+    </li>
 
-    </ul>
+</ul>
 
 </div>
 
