@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pengguna;
 
@@ -27,4 +27,26 @@ class PenggunaController extends Controller
             'housekeeping'
         ));
     }
+    public function store(Request $request)
+{
+    $request->validate([
+        'nama' => 'required',
+        'email' => 'required|email|unique:penggunas',
+        'username' => 'required|unique:penggunas',
+        'password' => 'required|min:6',
+        'role' => 'required',
+        'status' => 'required'
+    ]);
+
+    Pengguna::create([
+        'nama' => $request->nama,
+        'email' => $request->email,
+        'username' => $request->username,
+        'password' => bcrypt($request->password),
+        'role' => $request->role,
+        'status' => $request->status
+    ]);
+
+    return redirect()->back()->with('success','Pengguna berhasil ditambahkan.');
+}
 }
