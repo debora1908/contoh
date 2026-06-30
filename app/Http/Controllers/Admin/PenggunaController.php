@@ -49,4 +49,48 @@ class PenggunaController extends Controller
 
     return redirect()->back()->with('success','Pengguna berhasil ditambahkan.');
 }
+public function update(Request $request, $id)
+{
+    $pengguna = Pengguna::findOrFail($id);
+
+    $request->validate([
+        'nama'=>'required',
+        'email'=>'required|email',
+        'username'=>'required',
+        'role'=>'required',
+        'status'=>'required'
+    ]);
+
+    $pengguna->update([
+        'nama'=>$request->nama,
+        'email'=>$request->email,
+        'username'=>$request->username,
+        'role'=>$request->role,
+        'status'=>$request->status
+    ]);
+
+    return back()->with('success','Data berhasil diubah');
+}
+public function show($id)
+{
+    $pengguna = Pengguna::findOrFail($id);
+
+    return response()->json($pengguna);
+}
+public function destroy($id)
+{
+    Pengguna::findOrFail($id)->delete();
+
+    return back()->with('success','Pengguna berhasil dihapus');
+}
+public function resetPassword($id)
+{
+    $pengguna = Pengguna::findOrFail($id);
+
+    $pengguna->password = bcrypt('hotel123');
+
+    $pengguna->save();
+
+    return back()->with('success','Password berhasil direset');
+}
 }

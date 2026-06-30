@@ -115,3 +115,14 @@ Route::get('/pengguna', [App\Http\Controllers\Admin\PenggunaController::class, '
 Route::post('/pengguna', [App\Http\Controllers\Admin\PenggunaController::class, 'store'])->name('pengguna.store');
 Route::put('/pengguna/{id}', [App\Http\Controllers\Admin\PenggunaController::class, 'update'])->name('pengguna.update');
 Route::delete('/pengguna/{id}', [App\Http\Controllers\Admin\PenggunaController::class, 'destroy'])->name('pengguna.destroy');
+Route::get('/pengguna', [PenggunaController::class,'index'])->name('pengguna.index');
+
+Route::post('/pengguna', [PenggunaController::class,'store'])->name('pengguna.store');
+
+Route::get('/pengguna/{id}', [PenggunaController::class,'show'])->name('pengguna.show');
+
+Route::put('/pengguna/{id}', [PenggunaController::class,'update'])->name('pengguna.update');
+
+Route::delete('/pengguna/{id}', [PenggunaController::class,'destroy'])->name('pengguna.destroy');
+
+Route::put('/pengguna/reset/{id}', [PenggunaController::class,'resetPassword'])->name('pengguna.reset');
