@@ -156,7 +156,18 @@
         <div class="card shadow-sm">
             <div class="card-body">
                 <div class="d-flex justify-content-between mb-3">
-                    <input type="text" class="form-control w-50" placeholder="Cari pengguna...">
+                   <form action="{{ route('admin.pengguna.index') }}" method="GET" class="d-flex w-100">
+    <input type="text"
+           name="search"
+           class="form-control me-2"
+           placeholder="Cari nama, email atau username..."
+           value="{{ request('search') }}">
+
+    <button class="btn btn-primary">
+        <i class="bi bi-search"></i>
+        Cari
+    </button>
+</form>
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">
                         <i class="bi bi-plus-circle"></i> Tambah Pengguna
                     </button>
@@ -192,10 +203,44 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-info btn-sm"><i class="bi bi-eye"></i></button>
-                                    <button class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></button>
-                                    <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
-                                    <button class="btn btn-secondary btn-sm"><i class="bi bi-key"></i></button>
+                                    <a href="{{ route('admin.pengguna.show',$pengguna->id) }}" class="btn btn-info btn-sm">
+    <i class="bi bi-eye"></i>
+</a>
+                                   <button class="btn btn-warning btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#edit{{ $pengguna->id }}">
+    <i class="bi bi-pencil"></i>
+</button>
+                                    <form action="{{ route('admin.pengguna.destroy',$pengguna->id) }}"
+      method="POST"
+      class="d-inline">
+
+@csrf
+@method('DELETE')
+
+<button class="btn btn-danger btn-sm"
+onclick="return confirm('Yakin ingin menghapus pengguna ini?')">
+
+<i class="bi bi-trash"></i>
+
+</button>
+
+</form>
+                                    <form action="{{ route('admin.pengguna.reset',$pengguna->id) }}"
+      method="POST"
+      class="d-inline">
+
+@csrf
+@method('PUT')
+
+<button class="btn btn-secondary btn-sm"
+onclick="return confirm('Reset password pengguna?')">
+
+<i class="bi bi-key"></i>
+
+</button>
+
+</form>
                                 </td>
                             </tr>
                             @empty
@@ -261,6 +306,66 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @foreach($penggunas as $pengguna)
+<div class="modal fade" id="edit{{ $pengguna->id }}" tabindex="-1">
+<div class="modal-dialog">
+<form action="{{ route('admin.pengguna.update',$pengguna->id) }}" method="POST" class="modal-content">
+@csrf
+@method('PUT')
+
+<div class="modal-header">
+<h5 class="modal-title">Edit Pengguna</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body">
+
+<div class="mb-3">
+<label>Nama</label>
+<input type="text" name="nama" class="form-control" value="{{ $pengguna->nama }}">
+</div>
+
+<div class="mb-3">
+<label>Email</label>
+<input type="email" name="email" class="form-control" value="{{ $pengguna->email }}">
+</div>
+
+<div class="mb-3">
+<label>Username</label>
+<input type="text" name="username" class="form-control" value="{{ $pengguna->username }}">
+</div>
+
+<div class="mb-3">
+<label>Role</label>
+<select name="role" class="form-select">
+<option value="Admin" {{ $pengguna->role=='Admin'?'selected':'' }}>Admin</option>
+<option value="Resepsionis" {{ $pengguna->role=='Resepsionis'?'selected':'' }}>Resepsionis</option>
+<option value="Housekeeping" {{ $pengguna->role=='Housekeeping'?'selected':'' }}>Housekeeping</option>
+<option value="Manager" {{ $pengguna->role=='Manager'?'selected':'' }}>Manager</option>
+</select>
+</div>
+
+<div class="mb-3">
+<label>Status</label>
+<select name="status" class="form-select">
+<option value="Aktif" {{ $pengguna->status=='Aktif'?'selected':'' }}>Aktif</option>
+<option value="Nonaktif" {{ $pengguna->status=='Nonaktif'?'selected':'' }}>Nonaktif</option>
+</select>
+</div>
+
+</div>
+
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+<button type="submit" class="btn btn-success">Simpan</button>
+</div>
+
+</form>
+</div>
+</div>
+@endforeach
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

@@ -9,7 +9,17 @@ class PenggunaController extends Controller
 {
     public function index()
     {
-        $penggunas = Pengguna::latest()->paginate(10);
+        $query = Pengguna::query();
+
+if(request('search')){
+    $query->where(function($q){
+        $q->where('nama','like','%'.request('search').'%')
+          ->orWhere('email','like','%'.request('search').'%')
+          ->orWhere('username','like','%'.request('search').'%');
+    });
+}
+
+$penggunas = $query->latest()->paginate(10)->withQueryString();
 
         $totalPengguna = Pengguna::count();
 
