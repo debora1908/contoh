@@ -7,6 +7,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\Admin\KamarController as AdminKamarController;
+use App\Http\Controllers\Admin\ReservasiController as AdminReservasiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -106,8 +107,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::put('/reservasi/checkout/{id}', [BookingController::class, 'checkOut'])
         ->name('reservasi.checkout');
-
-    Route::get('/reservasi/cetak/{id}', [BookingController::class, 'cetak'])
-        ->name('reservasi.cetak');
+Route::get('/reservasi/cetak/{id}', [AdminReservasiController::class, 'cetak'])
+    ->name('reservasi.cetak');
 
 });
