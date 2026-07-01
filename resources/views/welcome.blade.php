@@ -99,11 +99,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="/"><i class="bi bi-water"></i> Five Star Horizon Hotel</a>
+            <a class="navbar-brand fw-bold" href="/"><i class="bi bi-water"></i> Nirwana  Hotel</a>
             
             <div class="mx-auto">
                 <ul class="navbar-nav d-flex flex-row gap-4">
                     <li class="nav-item"><a class="nav-link fw-bold" href="/" style="color: #0E7490; border-bottom: 2px solid #0E7490;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('about_us.index') }}">About Us</a></li>
                     <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('villas.index') }}">Villas</a></li>
                     <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('beachclub.index') }}">Beach Club</a></li>
                     <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('wellness.index') }}">Wellness</a></li>

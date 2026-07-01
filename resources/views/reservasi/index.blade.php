@@ -172,7 +172,48 @@
                     </div>
 
                     <!-- TOMBOL SUBMIT HITAM TEGAS -->
-                    <button type="submit" class="btn-submit shadow-sm">Pesan Sekarang</button>
+                  <style>
+    .btn-custom {
+        border: none;
+        padding: 15px 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 50px; /* Membuat ujung bulat seperti di image_73bb5a.png */
+        transition: all 0.3s ease;
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    /* Tombol Pesan (Elegan Teal) */
+    .btn-pesan {
+        background: linear-gradient(135deg, #0f766e, #0e7490);
+        box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
+    }
+    .btn-pesan:hover {
+        background: linear-gradient(135deg, #0d6a63, #0c6880);
+        transform: translateY(-2px);
+    }
+
+    /* Tombol Batal (Elegan Soft Gray) */
+    .btn-batal {
+        background: linear-gradient(135deg, #64748b, #475569);
+        box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+    }
+    .btn-batal:hover {
+        background: linear-gradient(135deg, #475569, #334155);
+        transform: translateY(-2px);
+    }
+</style>
+
+<!-- Gunakan struktur ini di dalam form Anda -->
+<div class="mt-4">
+    <button type="submit" class="btn-custom btn-pesan">Pesan Sekarang</button>
+    <a href="/" class="btn-custom btn-batal" style="text-decoration: none;">Batal</a>
+</div>
                 </form>
             </div>
 

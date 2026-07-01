@@ -52,4 +52,18 @@ class ReservasiController extends Controller
 
         return view('admin.cetak_reservasi', compact('booking'));
     }
+    public function store(Request $request)
+    {
+        // --- TEMPATKAN KODE DI SINI ---
+        // Pengecekan agar manajer tidak bisa input data
+        if (auth()->user()->role === 'manager') {
+            abort(403, 'Akses Ditolak: Anda tidak memiliki izin untuk melakukan aksi ini.');
+        }
+
+        // --- Logika penyimpanan data (hanya bisa diakses admin) ---
+        // Contoh: Reservation::create($request->all());
+        
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
+    }
+
 }
