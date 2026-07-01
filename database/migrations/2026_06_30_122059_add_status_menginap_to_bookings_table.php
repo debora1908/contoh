@@ -10,8 +10,7 @@ return new class extends Migration
     {
         Schema::table('bookings', function (Blueprint $table) {
             $table->string('status_menginap')
-                  ->default('Belum Check In')
-                  ->after('status_bayar');
+                  ->default('Belum Check In');
         });
     }
 
@@ -21,4 +20,4 @@ return new class extends Migration
             $table->dropColumn('status_menginap');
         });
     }
-}; 
+};

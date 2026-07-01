@@ -168,11 +168,12 @@ Silakan pilih jenis akses yang ingin digunakan.
 </p>
 
 <a href="{{ route('login') }}"
-class="btn btn-primary w-100 py-3 rounded-3 mb-3">
+   target="_blank"
+   class="btn btn-primary w-100 py-3 rounded-3 mb-3">
 
-<i class="bi bi-shield-lock-fill"></i>
+    <i class="bi bi-shield-lock-fill"></i>
 
-Login Admin
+    Login Admin
 
 </a>
 

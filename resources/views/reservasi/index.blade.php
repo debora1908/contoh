@@ -149,76 +149,120 @@
         <input type="email" class="form-control" id="email_tamu" name="email_tamu" placeholder="Masukkan email aktif Anda" required>
     </div>
 
-    <div class="mb-3">
-    <label for="pilihan_kamar" class="form-label fw-bold small text-secondary">PILIHAN TIPE KAMAR</label>
-    <select class="form-select" name="pilihan_kamar" required>
-    <option value="" disabled selected>Pilih tipe kamar hotel...</option>
+    <!-- PILIHAN TIPE KAMAR -->
+<div class="mb-3">
+    <label for="pilihan_kamar" class="form-label">
+        Pilihan Tipe Kamar
+    </label>
+
+    <select name="pilihan_kamar" class="form-select" required>
+    <option value=""> Pilih Tipe Kamar </option>
     <option value="standard">Standard Room</option>
-    <option value="deluxe">Deluxe Room </option>
-    <option value="suite">Executive Suite </option>
+    <option value="deluxe">Deluxe Room</option>
+    <option value="executive">Executive Suite</option>
 </select>
 </div>
 
-                    <!-- BARIS CHECK IN & CHECK OUT (Sejajar horizontal) -->
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-6">
-                            <label for="check_in" class="form-label">Tanggal Check In</label>
-                            <input type="date" class="form-control" id="check_in" name="check_in" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="check_out" class="form-label">Tanggal Check Out</label>
-                            <input type="date" class="form-control" id="check_out" name="check_out" required>
-                        </div>
-                    </div>
+<!-- NOMOR KAMAR -->
 
-                    <!-- TOMBOL SUBMIT HITAM TEGAS -->
-                  <style>
-    .btn-custom {
-        border: none;
-        padding: 15px 30px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-radius: 50px; /* Membuat ujung bulat seperti di image_73bb5a.png */
-        transition: all 0.3s ease;
-        text-align: center;
-        display: block;
-        width: 100%;
-        margin-bottom: 10px;
-        color: white;
-    }
+<!-- TANGGAL CHECK IN & CHECK OUT -->
+<div class="row g-3 mb-4">
 
-    /* Tombol Pesan (Elegan Teal) */
-    .btn-pesan {
-        background: linear-gradient(135deg, #0f766e, #0e7490);
-        box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
-    }
-    .btn-pesan:hover {
-        background: linear-gradient(135deg, #0d6a63, #0c6880);
-        transform: translateY(-2px);
-    }
+    <div class="col-md-6">
 
-    /* Tombol Batal (Elegan Soft Gray) */
-    .btn-batal {
-        background: linear-gradient(135deg, #64748b, #475569);
-        box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
-    }
-    .btn-batal:hover {
-        background: linear-gradient(135deg, #475569, #334155);
-        transform: translateY(-2px);
-    }
-</style>
+        <label for="check_in" class="form-label">
+            Tanggal Check In
+        </label>
 
-<!-- Gunakan struktur ini di dalam form Anda -->
-<div class="mt-4">
-    <button type="submit" class="btn-custom btn-pesan">Pesan Sekarang</button>
-    <a href="/" class="btn-custom btn-batal" style="text-decoration: none;">Batal</a>
-</div>
-                </form>
-            </div>
+        <input
+            type="date"
+            class="form-control"
+            id="check_in"
+            name="check_in"
+            required>
 
-        </div>
     </div>
+
+    <div class="col-md-6">
+
+        <label for="check_out" class="form-label">
+            Tanggal Check Out
+        </label>
+
+        <input
+            type="date"
+            class="form-control"
+            id="check_out"
+            name="check_out"
+            required>
+
+    </div>
+
+</div>
+
+<style>
+.btn-custom{
+    width:100%;
+    padding:15px;
+    border-radius:50px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    transition:.3s;
+    display:block;
+    text-align:center;
+    font-size:15px;
+}
+
+/* Tombol Pesan */
+.btn-pesan{
+    background:linear-gradient(135deg,#0f766e,#0e7490);
+    color:#fff;
+    border:none;
+    box-shadow:0 4px 15px rgba(14,116,144,.25);
+}
+
+.btn-pesan:hover{
+    background:linear-gradient(135deg,#0c6a64,#0b647d);
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+/* Tombol Batal */
+.btn-batal{
+    background:#ffffff;
+    color:#475569;
+    border:1.5px solid #d1d5db;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.btn-batal:hover{
+    background:#f8fafc;
+    color:#1e293b;
+    border-color:#94a3b8;
+    transform:translateY(-2px);
+}
+</style>
+<div class="mt-4">
+
+    <button type="submit" class="btn-custom btn-pesan">
+        Pesan Sekarang
+    </button>
+
+    <a href="/" class="btn-custom btn-batal text-decoration-none">
+        Batal
+    </a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
 
 </body>
 </html>

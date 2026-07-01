@@ -11,21 +11,21 @@ class KamarSeeder extends Seeder
     {
         Kamar::create([
             'nomor_kamar' => '101',
-            'tipe_kamar' => 'Standard Room',
+            'tipe_kamar' => 'standard',
             'harga_per_malam' => 500000,
-            'status' => 'Tersedia' // Pastikan sama dengan di Controller
+            'status' => 'Tersedia'
         ]);
 
         Kamar::create([
             'nomor_kamar' => '102',
-            'tipe_kamar' => 'Deluxe Room',
+            'tipe_kamar' => 'deluxe',
             'harga_per_malam' => 750000,
             'status' => 'Tersedia'
         ]);
 
         Kamar::create([
             'nomor_kamar' => '201',
-            'tipe_kamar' => 'Executive Suite',
+            'tipe_kamar' => 'executive',
             'harga_per_malam' => 1500000,
             'status' => 'Tersedia'
         ]);

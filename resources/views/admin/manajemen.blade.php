@@ -293,13 +293,13 @@
                                     Terisi
                                 </span>
 
-                            @else
+                           @elseif($kamar->status=="Perbaikan")
 
-                                <span class="badge bg-warning text-dark badge-status">
-                                    Sedang Diperbaiki
-                                </span>
+<span class="badge bg-warning text-dark badge-status">
+    Sedang Diperbaiki
+</span>
 
-                            @endif
+@endif
 
                         </div>
 
@@ -535,10 +535,10 @@ Simpan
                             Kotor
                         </option>
 
-                        <option value="Sedang Diperbaiki"
-                        {{ $kamar->status=='Sedang Diperbaiki' ? 'selected' : '' }}>
-                            Sedang Diperbaiki
-                        </option>
+                       <option value="Perbaikan"
+{{ $kamar->status=='Perbaikan' ? 'selected' : '' }}>
+    Sedang Diperbaiki
+</option>
 
                     </select>
 

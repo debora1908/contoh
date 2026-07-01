@@ -80,31 +80,48 @@ body{background:#f5f7fb;font-family:'Segoe UI',sans-serif;}
 <div class="card-body">
 
 <form action="{{ route('admin.reservasi.index') }}" method="GET">
-<div class="row mb-3">
-<div class="col-md-4">
-<input type="text" name="search" class="form-control" placeholder="Cari nama tamu atau email..." value="{{ request('search') }}">
-</div>
+<div class="row g-3 align-items-end mb-4">
 
-<div class="col-md-3">
-<select name="status" class="form-select">
-<option value="">Semua Status</option>
-<option value="Pending" {{ request('status')=='Pending' ? 'selected' : '' }}>Pending</option>
-<option value="Lunas" {{ request('status')=='Lunas' ? 'selected' : '' }}>Lunas</option>
-</select>
-</div>
+    <div class="col-md-3">
+        <input
+            type="text"
+            name="search"
+            class="form-control"
+            placeholder="Cari nama tamu atau email..."
+            value="{{ request('search') }}">
+    </div>
 
-<div class="col-md-3">
-<select name="tipe" class="form-select">
-<option value="">Semua Kamar</option>
-<option value="standard" {{ request('tipe')=='standard' ? 'selected' : '' }}>Standard</option>
-<option value="deluxe" {{ request('tipe')=='deluxe' ? 'selected' : '' }}>Deluxe</option>
-<option value="suite" {{ request('tipe')=='suite' ? 'selected' : '' }}>Suite</option>
-</select>
-</div>
+    <div class="col-md-3">
+        <select name="status" class="form-select">
+            <option value="">Semua Status</option>
+            <option value="Pending" {{ request('status')=='Pending' ? 'selected' : '' }}>Pending</option>
+            <option value="Lunas" {{ request('status')=='Lunas' ? 'selected' : '' }}>Lunas</option>
+        </select>
+    </div>
 
-<div class="col-md-2">
-<button type="submit" class="btn btn-primary w-100">Cari</button>
-</div>
+    <div class="col-md-3">
+        <select name="tipe" class="form-select">
+            <option value="">Semua Kamar</option>
+            <option value="standard" {{ request('tipe')=='standard' ? 'selected' : '' }}>Standard</option>
+            <option value="deluxe" {{ request('tipe')=='deluxe' ? 'selected' : '' }}>Deluxe</option>
+            <option value="suite" {{ request('tipe')=='suite' ? 'selected' : '' }}>Suite</option>
+        </select>
+    </div>
+
+    <div class="col-md-1 d-grid">
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+
+    <div class="col-md-2 d-grid">
+        <a href="{{ route('reservasi.index') }}"
+           class="btn btn-success">
+            <i class="bi bi-plus-circle me-1"></i>
+            Tambah
+        </a>
+    </div>
+
 </div>
 </form>
 

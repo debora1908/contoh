@@ -1,135 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about us</title>
+    <title>Tentang Kami | Nirwana Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; color: #2D3748; }
+        
+        /* Header Styling */
+        .hero-about { padding: 80px 0; background: linear-gradient(135deg, #0E7490, #155e75); color: white; border-radius: 0 0 50px 50px; }
+        .section-title { font-family: 'Playfair Display', serif; color: #0E7490; font-size: 2.5rem; }
+        
+        /* Card Styling */
+        .luxury-card { 
+            background: #ffffff; 
+            border: none; 
+            border-radius: 20px; 
+            padding: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            height: 100%;
+        }
+        
+        /* Footer Styling */
+        .footer-section { background: #0F172A; color: #94a3b8; padding: 60px 0; margin-top: 80px; }
+        .contact-item { margin-bottom: 15px; }
+        .contact-item i { color: #22d3ee; margin-right: 15px; }
+    </style>
 </head>
 <body>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/" style="font-family: 'Playfair Display', serif; color: #0E7490;"><i class="bi bi-water"></i> Five Star Horizon Hotel</a>
+            
+            <!-- Menu Tengah yang Tetap Aktif -->
+            <div class="mx-auto">
+                <ul class="navbar-nav d-flex flex-row gap-4">
+                  <li class="nav-item"><a class="nav-link fw-bold" href="/" style="color: #0E7490; border-bottom: 2px solid #0E7490;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('about_us.index') }}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('villas.index') }}">Villas</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('beachclub.index') }}">Beach Club</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="{{ route('wellness.index') }}">Wellness</a></li>  </ul>
+            </div>
 
-<style>
-    .about-page {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #fcfcfc; /* Warna background bersih senada dengan screenshot */
-        color: #334155;
-        padding: 80px 0;
-    }
-    
-    .section-title {
-        font-family: 'Playfair Display', serif;
-        color: #0f4c5c; /* Warna teal gelap khas Five Star Horizon */
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-    }
-
-    .about-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 40px;
-        transition: transform 0.3s ease;
-    }
-
-    .icon-box {
-        font-size: 2rem;
-        color: #0f4c5c;
-        margin-bottom: 20px;
-    }
-</style>
-
-<section class="about-page">
-    <div class="container">
-        <!-- Header -->
-        <div class="text-center mb-5">
-            <h1 class="section-title">Tentang Five Star Horizon</h1>
-            <p class="text-muted">Menciptakan momen tak terlupakan di jantung surga tropis.</p>
+            <div>
+                <a href="/reservasi" class="btn btn-sm btn-dark px-3 rounded-pill">Book A Stay</a>
+            </div>
         </div>
+    </nav>
 
-        <!-- Konten Utama -->
+    <div class="hero-about text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold text-white">Tentang Nirwana Hotel</h1>
+            <p class="lead">Menciptakan momen tak terlupakan di jantung surga tropis Bali.</p>
+        </div>
+    </div>
+
+    <div class="container my-5">
         <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="about-card h-100">
-                    <i class="bi bi-building icon-box"></i>
-                    <h4>Filosofi Kami</h4>
-                    <p>Di Five Star Horizon, kami percaya bahwa kemewahan sejati adalah ketenangan. Kami memadukan arsitektur kontemporer dengan sentuhan tropis yang harmonis untuk memberikan pengalaman menginap yang eksklusif bagi setiap tamu kami.</p>
+            <div class="col-md-6">
+                <div class="luxury-card">
+                    <h2 class="section-title mb-3">Filosofi Kami</h2>
+                    <p>Di Nirwana Hotel, kami percaya bahwa perjalanan bukan sekadar destinasi, melainkan sebuah pengalaman yang menyentuh jiwa. Kami memadukan arsitektur modern yang mewah dengan keindahan alam tropis yang harmonis.</p>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="about-card h-100">
-                    <i class="bi bi-heart-pulse icon-box"></i>
-                    <h4>Komitmen Pelayanan</h4>
-                    <p>Dedikasi kami adalah pelayanan tanpa batas. Setiap detail, mulai dari kenyamanan kamar hingga fasilitas pendukung, dirancang dengan ketelitian untuk memastikan Anda merasa seperti berada di rumah sendiri dengan standar layanan bintang lima.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Poin Keunggulan (Gaya mirroring dengan list di screenshot) -->
-        <div class="mt-4 p-4 border rounded-4 bg-white">
-            <h4 class="mb-4 text-center">Kenapa Memilih Kami?</h4>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <h6 class="fw-bold">Lokasi Strategis</h6>
-                    <p class="small text-muted">Akses mudah ke pantai dan pusat wisata.</p>
-                </div>
-                <div class="col-md-4">
-                    <h6 class="fw-bold">Privasi Terjaga</h6>
-                    <p class="small text-muted">Ruang privat yang dirancang untuk ketenangan.</p>
-                </div>
-                <div class="col-md-4">
-                    <h6 class="fw-bold">Layanan 24/7</h6>
-                    <p class="small text-muted">Staf profesional yang siap membantu Anda.</p>
+            <div class="col-md-6">
+                <div class="luxury-card">
+                    <h2 class="section-title mb-3">Komitmen Pelayanan</h2>
+                    <p>Pelayanan bagi kami adalah seni. Staf profesional kami siap melayani sepenuh hati, memastikan setiap detail kenyamanan Anda terpenuhi—mulai dari kualitas tidur terbaik hingga pengalaman kuliner autentik.</p>
                 </div>
             </div>
         </div>
     </div>
-</section>
-    <div class="container">
-        <div class="text-center mb-5">
-            <h1 class="hotel-title">Tentang Nirwana Hotel</h1>
-            <p class="sub-title">Surga Ketenangan Anda</p>
-        </div>
 
-        <div class="row align-items-center">
-            <!-- Bagian Kiri: Narasi -->
-            <div class="col-lg-7">
-                <div class="content-box">
-                    <span class="section-label">FILOSOFI KAMI</span>
-                    <p class="elegant-text">
-                        Di Hotel Nirwana, kami percaya bahwa perjalanan bukan sekadar destinasi, melainkan sebuah pengalaman yang menyentuh jiwa. 
-                        Terletak di lokasi yang memadukan keindahan alam tropis dengan arsitektur modern yang mewah, 
-                        Hotel Nirwana hadir sebagai pelarian sempurna dari hiruk-pikuk dunia.
-                    </p>
-                    
-                    <span class="section-label mt-4">KOMITMEN PELAYANAN</span>
-                    <p class="elegant-text">
-                        Pelayanan bagi kami adalah seni. Staf kami dilatih untuk memahami kebutuhan Anda sebelum Anda memintanya. 
-                        Dari kenyamanan kamar bertaraf internasional hingga fasilitas relaksasi yang menenangkan, 
-                        semuanya dirancang untuk memastikan Anda merasa benar-benar dimanjakan.
-                    </p>
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="text-white mb-3">Nirwana Hotel</h4>
+                    <p>Pelarian sempurna bagi mereka yang mencari ketenangan dan privasi yang terjaga di Bali.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4 class="text-white mb-3">Hubungi Kami</h4>
+                    <div class="contact-item"><i class="bi bi-geo-alt"></i> Jl. Pantai Tropis No. 88, Bali</div>
+                    <div class="contact-item"><i class="bi bi-telephone"></i> +62 361 999 888</div>
+                    <div class="contact-item"><i class="bi bi-envelope"></i> info@nirwanahotel.com</div>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-white mb-3">Ikuti Sosial Media</h4>
+                    <a href="#" class="text-light me-3"><i class="bi bi-instagram fs-4"></i></a>
+                    <a href="#" class="text-light me-3"><i class="bi bi-facebook fs-4"></i></a>
+                    <a href="#" class="text-light"><i class="bi bi-twitter fs-4"></i></a>
                 </div>
             </div>
-
-            <!-- Bagian Kanan: Highlights -->
-            <div class="col-lg-5">
-                <div class="feature-box">
-                    <h5 class="mb-4" style="color: #064e3b;">Mengapa Memilih Kami?</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><strong>✓ Kenyamanan Tak Tertandingi</strong><br><small>Desain estetik & kualitas tidur terbaik.</small></li>
-                        <li class="mb-3"><strong>✓ Lokasi Strategis & Eksklusif</strong><br><small>Akses mudah, privasi terjaga.</small></li>
-                        <li class="mb-3"><strong>✓ Pengalaman Kuliner Autentik</strong><br><small>Standar rasa bintang lima.</small></li>
-                        <li><strong>✓ Sentuhan Personal</strong><br><small>Setiap tamu adalah keluarga.</small></li>
-                    </ul>
-                </div>
+            <div class="text-center mt-4 border-top border-secondary pt-4">
+                &copy; 2026 Nirwana Hotel Management System. All Rights Reserved.
             </div>
         </div>
+    </footer>
 
-        <div class="text-center mt-5">
-            <h4 class="fst-italic" style="color: #064e3b; font-family: 'Playfair Display', serif;">
-                "Di Hotel Nirwana, kami tidak hanya menyediakan tempat untuk menginap, kami menyediakan tempat bagi Anda untuk pulang."
-            </h4>
-        </div>
-    </div>
-</section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
