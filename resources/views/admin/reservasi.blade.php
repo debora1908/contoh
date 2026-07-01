@@ -29,11 +29,33 @@ body{background:#f5f7fb;font-family:'Segoe UI',sans-serif;}
 <hr>
 
 <ul class="menu">
-<li><a href="{{ route('admin.dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-<li><a href="{{ route('admin.manajemen.index') }}"><i class="bi bi-door-open-fill"></i> Manajemen Kamar</a></li>
-<li><a class="active" href="{{ route('admin.reservasi.index') }}"><i class="bi bi-journal-bookmark-fill"></i> Reservasi Tamu</a></li>
-<li><a href="{{ route('admin.pengguna.index') }}"><i class="bi bi-people-fill"></i> Pengguna</a></li>
-<li>
+<li class="nav-item">
+    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+        <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.manajemen.index') }}" class="nav-link">
+        <i class="bi bi-door-open"></i> Manajemen Kamar
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.reservasi.index') }}" class="nav-link">
+        <i class="bi bi-journal-text"></i> Reservasi Tamu
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.pengguna.index') }}" class="nav-link">
+        <i class="bi bi-people"></i> Pengguna
+    </a>
+</li> <li class="nav-item">
+    <a href="{{ route('admin.laporan.index') }}" class="nav-link">
+        <i class="bi bi-bar-chart-fill"></i> Laporan
+    </a>
+</li> 
 <form action="{{ route('logout') }}" method="POST">
 @csrf
 <button type="submit" class="btn text-white w-100 text-start">
@@ -87,7 +109,84 @@ body{background:#f5f7fb;font-family:'Segoe UI',sans-serif;}
 </form>
 
 <div class="table-responsive">
-<!-- Tabel booking tetap gunakan kode tabel yang sudah kamu punya -->
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>No</th>
+            <th>Nama Tamu</th>
+            <th>Email</th>
+            <th>Kamar</th>
+            <th>No. Kamar</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Status</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    @forelse($bookings as $booking)
+
+    <tr>
+
+        <td>{{ $loop->iteration }}</td>
+
+        <td>{{ $booking->nama_tamu }}</td>
+
+        <td>{{ $booking->email_tamu }}</td>
+
+        <td>{{ ucfirst($booking->pilihan_kamar) }}</td>
+
+        <td>{{ $booking->nomor_kamar }}</td>
+
+        <td>{{ $booking->check_in }}</td>
+
+        <td>{{ $booking->check_out }}</td>
+
+        <td>
+            @if($booking->status_bayar=='Lunas')
+                <span class="badge bg-success">Lunas</span>
+            @else
+                <span class="badge bg-warning text-dark">Pending</span>
+            @endif
+        </td>
+
+        <td>
+
+            <a href="{{ route('booking.edit',$booking->id) }}" class="btn btn-warning btn-sm">
+                <i class="bi bi-pencil"></i>
+            </a>
+
+            <a href="{{ route('admin.reservasi.cetak',$booking->id) }}" class="btn btn-info btn-sm">
+                <i class="bi bi-printer"></i>
+            </a>
+
+            <form action="{{ route('booking.destroy',$booking->id) }}" method="POST" class="d-inline">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger btn-sm" onclick="return confirm('Hapus data?')">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </form>
+
+        </td>
+
+    </tr>
+
+    @empty
+
+    <tr>
+        <td colspan="9" class="text-center">
+            Belum ada data reservasi.
+        </td>
+    </tr>
+
+    @endforelse
+
+    </tbody>
+
+</table>
 </div>
 
 <div class="mt-3">

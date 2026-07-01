@@ -111,8 +111,21 @@
                 </ul>
             </div>
 
-            <div>
-                <a href="/reservasi" class="btn btn-sm btn-dark px-3 rounded-pill">Book A Stay</a>
+            
+               
+              <div class="d-flex gap-2">
+
+    <button class="btn btn-outline-primary rounded-pill"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal">
+        Login
+    </button>
+
+    <a href="/reservasi" class="btn btn-sm btn-dark px-3 rounded-pill">
+        Book A Stay
+    </a>
+
+</div>  
             </div>
         </div>
     </nav>
@@ -124,7 +137,60 @@
             <a href="{{ route('reservasi.index') }}" class="btn-explore">Discover Our Suites</a>
         </div>
     </div>
+<!-- Modal Login -->
+<div class="modal fade" id="loginModal" tabindex="-1">
 
+<div class="modal-dialog modal-dialog-centered">
+
+<div class="modal-content border-0 rounded-4 shadow-lg">
+
+<div class="modal-header bg-primary text-white">
+
+<h5 class="modal-title">
+<i class="bi bi-person-circle"></i>
+Pilih Login
+</h5>
+
+<button type="button"
+class="btn-close btn-close-white"
+data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body text-center p-4">
+
+<h4 class="fw-bold mb-4">
+Selamat Datang
+</h4>
+
+<p class="text-muted mb-4">
+Silakan pilih jenis akses yang ingin digunakan.
+</p>
+
+<a href="{{ route('login') }}"
+class="btn btn-primary w-100 py-3 rounded-3 mb-3">
+
+<i class="bi bi-shield-lock-fill"></i>
+
+Login Admin
+
+</a>
+
+<a href="{{ route('user.login') }}"
+class="btn btn-success w-100 py-3 rounded-3">
+
+<i class="bi bi-person-fill"></i>
+
+Masuk Sebagai User
+
+</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -146,62 +146,48 @@
 
 <body>
 
-<!-- ================= Sidebar ================= -->
 
-<div class="sidebar">
 
-    <div class="logo">
-        🏨 E-Hotel Mgt
+
+    <div class="sidebar">
+        <div class="fs-4 fw-bold mb-4">🏨 E-Hotel Mgt</div>
+        <ul class="nav flex-column menu">
+           <li class="nav-item">
+    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+        <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.manajemen.index') }}" class="nav-link">
+        <i class="bi bi-door-open"></i> Manajemen Kamar
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.reservasi.index') }}" class="nav-link">
+        <i class="bi bi-journal-text"></i> Reservasi Tamu
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.pengguna.index') }}" class="nav-link">
+        <i class="bi bi-people"></i> Pengguna
+    </a>
+</li> <li class="nav-item">
+    <a href="{{ route('admin.laporan.index') }}" class="nav-link">
+        <i class="bi bi-bar-chart-fill"></i> Laporan
+    </a>
+</li> 
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="btn text-white w-100 text-start ps-4"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                </form>
+            </li>
+        </ul>
     </div>
 
-    <hr>
 
-<ul class="menu">
-
-    <li>
-        <a href="{{ route('admin.dashboard') }}"
-           class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
-            <i class="bi bi-speedometer2"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>
-
-    <li>
-        <a href="{{ route('admin.manajemen.index') }}"
-           class="{{ request()->is('admin/manajemen*') ? 'active' : '' }}">
-            <i class="bi bi-door-open-fill"></i>
-            <span>Manajemen Kamar</span>
-        </a>
-    </li>
-
-    <li>
-        <a href="{{ route('admin.reservasi.index') }}"
-           class="{{ request()->is('admin/reservasi*') ? 'active' : '' }}">
-            <i class="bi bi-journal-bookmark-fill"></i>
-            <span>Reservasi Tamu</span>
-        </a>
-    </li>
-
-    <li>
-        <a href="/admin/pengguna"
-           class="{{ request()->is('admin/pengguna*') ? 'active' : '' }}">
-            <i class="bi bi-people-fill"></i>
-            <span>Pengguna</span>
-        </a>
-    </li>
-
-    <li>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit"
-                style="width:100%;background:none;border:none;padding:14px 18px;text-align:left;color:#cbd5e1;display:flex;align-items:center;gap:12px;border-radius:12px;">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Logout</span>
-            </button>
-        </form>
-    </li>
-
-</ul>
 
 </div>
 

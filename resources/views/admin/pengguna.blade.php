@@ -20,11 +20,33 @@
     <div class="sidebar">
         <div class="fs-4 fw-bold mb-4">🏨 E-Hotel Mgt</div>
         <ul class="nav flex-column menu">
-            <li><a href="{{ route('admin.dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-            <li><a href="{{ route('admin.manajemen.index') }}"><i class="bi bi-door-open-fill"></i> Manajemen Kamar</a></li>
-            <li><a href="{{ route('admin.reservasi.index') }}"><i class="bi bi-journal-bookmark-fill"></i> Reservasi Tamu</a></li>
-            <li><a class="active" href="{{ route('admin.pengguna.index') }}"><i class="bi bi-people-fill"></i> Pengguna</a></li>
-            <li>
+           <li class="nav-item">
+    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+        <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.manajemen.index') }}" class="nav-link">
+        <i class="bi bi-door-open"></i> Manajemen Kamar
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.reservasi.index') }}" class="nav-link">
+        <i class="bi bi-journal-text"></i> Reservasi Tamu
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.pengguna.index') }}" class="nav-link">
+        <i class="bi bi-people"></i> Pengguna
+    </a>
+</li> <li class="nav-item">
+    <a href="{{ route('admin.laporan.index') }}" class="nav-link">
+        <i class="bi bi-bar-chart-fill"></i> Laporan
+    </a>
+</li> 
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="btn text-white w-100 text-start ps-4"><i class="bi bi-box-arrow-right"></i> Logout</button>
@@ -114,7 +136,85 @@
             </div>
         </div>
     </div>
+<!-- Modal Tambah Pengguna -->
+<div class="modal fade" id="modalTambah" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
+            <form action="{{ route('admin.pengguna.store') }}" method="POST">
+                @csrf
+
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        Tambah Pengguna
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label>Nama</label>
+                        <input type="text" name="nama" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Role</label>
+
+                        <select name="role" class="form-select" required>
+                            <option value="">-- Pilih Role --</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Resepsionis">Resepsionis</option>
+                            <option value="Housekeeping">Housekeeping</option>
+                        </select>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Status</label>
+
+                        <select name="status" class="form-select" required>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Nonaktif">Nonaktif</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Batal
+                    </button>
+
+                    <button type="submit" class="btn btn-primary">
+                        Simpan
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
